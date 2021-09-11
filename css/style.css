@@ -1,0 +1,26 @@
+/* STYLE */
+
+.calculator_container{
+    display: grid;
+    justify-items: center;
+    width: 100%;
+}
+.calculator{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas: 
+    "display display display display"
+    "seven eight nine minus"
+    "four five six plus"
+    "one two three multiply"
+    "zero clear result divide";
+    grid-gap: 10px;
+}
+.calculator_screen{
+    grid-area: display;
+}
+button{
+    width: 50px;
+    height: 50px;
+}
