@@ -1,0 +1,2 @@
+# kalkulator
+Podstawowy graficzny kalkulator
