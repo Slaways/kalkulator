@@ -3,8 +3,10 @@ let result = null;
 let firstOperand = null;
 let secondOperand = null; 
 const numbers = document.querySelectorAll(".number");
-const screen = document.getElementById("calculator_screen");
+const screen = document.getElementById("screen");
 const operators = document.querySelectorAll(".operator");
+
+clearScreen();
 
 function add(a,b){
     return a+b;
@@ -46,7 +48,8 @@ function displayValue(value){
     screen.textContent = screen.textContent + value;
 }
 numbers.forEach(numbers => {
-    numbers.addEventListener('click', (e) => {
-        displayValue(e.target.textContent);
+    numbers.addEventListener('click', () => {
+        displayValue(numbers.textContent);
+        console.log(numbers.textContent);
     })
 })
