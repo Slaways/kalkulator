@@ -1,10 +1,12 @@
 /* JavaScript */
 let result = null;
 let firstOperand = null;
-let secondOperand = null; 
+let secondOperand = null;
+let currentOperator = null;
 const numbers = document.querySelectorAll(".number");
 const screen = document.getElementById("screen");
 const operators = document.querySelectorAll(".operator");
+const equal = document.getElementById("equal");
 
 clearScreen();
 
@@ -25,6 +27,35 @@ function del(){
     firstOperand = null;
     secondOperand = null;
 }
+
+function screenValue(){
+    return screen.textContent;
+}
+
+function saveOperand(value){
+    if (firstOperand == null){
+        firstOperand = value;
+    }else{
+        secondOperand == value;
+    }
+
+}
+
+function saveOperator(operator){
+    if (currentOperator == null){
+        currentOperator = operator;
+    }else if(firstOperand != null && secondOperand !=null){
+        result = operate(+firstOperand, +secondOperand, currentOperator);
+        clearScreen();
+        displayValue(result);
+        firstOperand = result;
+        secondOperand = null;
+        currentOperator = operator;
+    }
+}
+
+
+
 function operate(a, b, operator){
     switch (operator){
         case "add":
@@ -52,4 +83,15 @@ numbers.forEach(numbers => {
         displayValue(numbers.textContent);
         console.log(numbers.textContent);
     })
+})
+operators.forEach(operator => {
+    operator.addEventListener('click', (e) => {
+        saveOperand(screenValue());
+        saveOperator(e.target.id);
+        clearScreen();
+    })
+})
+equal.addEventListener("click", () =>{
+    clearScreen();
+    displayValue(result);
 })
